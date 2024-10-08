@@ -10,13 +10,13 @@ const User = require('./models/User');
 const argon2 = require('argon2');
 require('dotenv').config();
 
-
+const mongoURI = process.env.MONGO_URI;
 const app = express();
 app.use(express.json()); // Middleware to parse JSON request bodies
 app.use(cors());
 
 // MongoDB connection (replace with your MongoDB URI)
-mongoose.connect('mongodb+srv://salonisb2002:xMGQhiLWCZV0bnyi@cluster0.fmeue.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect(mongoURI)
     .then(() => console.log('Connected to MongoDB'))
     .catch((err) => console.error('MongoDB connection error:', err));
 
